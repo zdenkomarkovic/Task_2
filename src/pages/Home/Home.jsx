@@ -10,8 +10,8 @@ const Home = () => {
       {localStorage.hasOwnProperty('loggedUser') && (
         <div>
           <h1 className='text-[30px] my-10'>Ulogovan korisnik:</h1>
-          <p className='text-[25px] my-5'>{loggedUser.name} </p>
-          <p className='text-[25px] my-5'>{loggedUser.email}</p>
+          <p className='text-[25px] my-5'>Ime: {loggedUser.name} </p>
+          <p className='text-[25px] my-5'>Email: {loggedUser.email}</p>
         </div>
       )}
 

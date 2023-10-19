@@ -6,6 +6,7 @@ const LogComponent = ({
   logUser,
   setToggleView,
   toggleView,
+  logErrors,
 }) => {
   return (
     <div className='w-[30%] mx-auto flex-col tracking-widest'>
@@ -19,8 +20,10 @@ const LogComponent = ({
         <input
           name='email'
           type='email'
-          placeholder='Unesi email...'
-          className='border-b-[1px] px-5 py-2 my-5 tracking-wider'
+          placeholder={logErrors.email ? logErrors.email : 'Unesi email...'}
+          className={`border-b-[1px] px-5 py-2 my-5 tracking-wider ${
+            logErrors.email && 'border-[1px] border-red-500'
+          }`}
           onChange={inputLogUser}
           defaultValue={logUser.email}
         />
@@ -28,8 +31,12 @@ const LogComponent = ({
         <input
           name='password'
           type='password'
-          placeholder='Unesi lozinku...'
-          className='border-b-[1px] px-5 py-2 my-5 tracking-wider'
+          placeholder={
+            logErrors.password ? logErrors.password : 'Unesi lozinku...'
+          }
+          className={`border-b-[1px] px-5 py-2 my-5 tracking-wider ${
+            logErrors.password && 'border-[1px] border-red-500'
+          }`}
           onChange={inputLogUser}
           defaultValue={logUser.password}
         />

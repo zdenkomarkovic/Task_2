@@ -5,6 +5,7 @@ const RegComponent = ({
   handleInput,
   setToggleView,
   toggleView,
+  regErrors,
 }) => {
   return (
     <div className='w-[30%] mx-auto flex-col tracking-widest'>
@@ -18,24 +19,32 @@ const RegComponent = ({
         <input
           name='name'
           type='text'
-          placeholder='Unesi ime...'
-          className='border-b-[1px] px-5 py-2 my-5 tracking-wider'
+          placeholder={regErrors.name ? regErrors.name : 'Unesi ime...'}
+          className={`border-b-[1px] px-5 py-2 my-5 tracking-wider ${
+            regErrors.name && 'border-[1px] border-red-500'
+          }`}
           onChange={handleInput}
         />
 
         <input
           name='email'
           type='email'
-          placeholder='Unesi email...'
-          className='border-b-[1px] px-5 py-2 my-5 tracking-wider'
+          placeholder={regErrors.email ? regErrors.email : 'Unesi email...'}
+          className={`border-b-[1px] px-5 py-2 my-5 tracking-wider ${
+            regErrors.email && 'border-[1px] border-red-500'
+          }`}
           onChange={handleInput}
         />
 
         <input
           name='password'
           type='password'
-          placeholder='Unesi lozinku...'
-          className='border-b-[1px] px-5 py-2 my-5 tracking-wider'
+          placeholder={
+            regErrors.password ? regErrors.password : 'Unesi lozinku...'
+          }
+          className={`border-b-[1px] px-5 py-2 my-5 tracking-wider ${
+            regErrors.password && 'border-[1px] border-red-500'
+          }`}
           onChange={handleInput}
         />
         <button
