@@ -1,23 +1,23 @@
-import logo from './logo.svg';
-import './App.css';
+import { Suspense } from 'react';
+import { Outlet } from 'react-router-dom';
+import Navbar from './components/Navbar/Navbar';
+import { UsersProvider } from './contexts/UsersContext';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
+    <div>
+      <UsersProvider>
+        <Navbar />
+        <Suspense
+          fallback={
+            <div className='container mx-auto my-20 flex'>
+              <h2 className='text-[50px] mx-auto'>Loading...</h2>
+            </div>
+          }
         >
-          Learn React
-        </a>
-      </header>
+          <Outlet />
+        </Suspense>
+      </UsersProvider>
     </div>
   );
 }
